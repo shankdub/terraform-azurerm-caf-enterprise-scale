@@ -1,3 +1,56 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.74.0"
+      configuration_aliases = [
+        azurerm.connectivity,
+        azurerm.management,
+      ]
+    }
+  }
+}
+
+# Declare a standard provider block using your preferred configuration.
+# This will be used for the deployment of all "Core resources".
+
+provider "azurerm" {
+  features {}
+}
+
+# Declare an aliased provider block using your preferred configuration.
+# This will be used for the deployment of all "Connectivity resources" to the specified `subscription_id`.
+
+provider "azurerm" {
+  alias           = "connectivity"
+  subscription_id = "5f7553d2-1a6e-46df-89fd-4b5fe00fef96"
+  features {}
+}
+
+# Declare a standard provider block using your preferred configuration.
+# This will be used for the deployment of all "Management resources" to the specified `subscription_id`.
+
+provider "azurerm" {
+  alias           = "management"
+  subscription_id = "d1a7ebf8-bbf9-465b-96e7-09c013117714"
+  features {}
+}
+
+# Map each module provider to their corresponding `azurerm` provider using the providers input object
+
+module "caf-enterprise-scale" {
+  source  = "Azure/caf-enterprise-scale/azurerm"
+  version = "5.0.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
+
+  providers = {
+    azurerm              = azurerm
+    azurerm.connectivity = azurerm.connectivity
+    azurerm.management   = azurerm.management
+  }
+
+ default_location = eastus 
+ root_parent_id = "d1db4e43-c260-4e8e-812a-cfd32b9362ef"
+}
 # The following module is used to generate the configuration
 # data used to deploy all archetype resources at the
 # Management Group scope. Future plans include repeating this
