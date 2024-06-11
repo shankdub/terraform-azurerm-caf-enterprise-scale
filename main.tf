@@ -1,23 +1,23 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 3.74.0"
-      configuration_aliases = [
-        azurerm.connectivity,
-        azurerm.management,
-      ]
-    }
-  }
-}
+# terraform {
+#   required_providers {
+#     azurerm = {
+#       source  = "hashicorp/azurerm"
+#       version = ">= 3.74.0"
+#       configuration_aliases = [
+#         azurerm.connectivity,
+#         azurerm.management,
+#       ]
+#     }
+#   }
+# }
 
-# Declare a standard provider block using your preferred configuration.
-# This will be used for the deployment of all "Core resources".
+# # Declare a standard provider block using your preferred configuration.
+# # This will be used for the deployment of all "Core resources".
 
-provider "azurerm" {
+# provider "azurerm" {
   
-  features {}
-}
+#   features {}
+# }
 
 # Declare an aliased provider block using your preferred configuration.
 # This will be used for the deployment of all "Connectivity resources" to the specified `subscription_id`.
