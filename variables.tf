@@ -507,13 +507,22 @@ DESCRIPTION
 variable "subscription_id_overrides" {
   type        = map(list(string))
   description = "If specified, will be used to assign subscription_ids to the default Enterprise-scale Management Groups."
-  default     = {}
+  default     = {
+      landing_zones = [
+      "5d4f8c1f-901c-4999-87e9-0dc11e631401"]
+      connectivity = [
+      "5f7553d2-1a6e-46df-89fd-4b5fe00fef96"]
+      management = [
+      "d1a7ebf8-bbf9-465b-96e7-09c013117714"]
+      identity = [
+      "5efd44f6-4013-44ce-8674-cadc3840ddb7"]
+  }
 }
 
 variable "subscription_id_connectivity" {
   type        = string
   description = "If specified, identifies the Platform subscription for \"Connectivity\" for resource deployment and correct placement in the Management Group hierarchy."
-  default     = ""
+  default     = "5f7553d2-1a6e-46df-89fd-4b5fe00fef96"
 
   validation {
     condition     = can(regex("^[a-z0-9-]{36}$", var.subscription_id_connectivity)) || var.subscription_id_connectivity == ""
@@ -524,7 +533,7 @@ variable "subscription_id_connectivity" {
 variable "subscription_id_identity" {
   type        = string
   description = "If specified, identifies the Platform subscription for \"Identity\" for resource deployment and correct placement in the Management Group hierarchy."
-  default     = ""
+  default     = "5efd44f6-4013-44ce-8674-cadc3840ddb7"
 
   validation {
     condition     = can(regex("^[a-z0-9-]{36}$", var.subscription_id_identity)) || var.subscription_id_identity == ""
@@ -535,7 +544,7 @@ variable "subscription_id_identity" {
 variable "subscription_id_management" {
   type        = string
   description = "If specified, identifies the Platform subscription for \"Management\" for resource deployment and correct placement in the Management Group hierarchy."
-  default     = ""
+  default     = "d1a7ebf8-bbf9-465b-96e7-09c013117714"
 
   validation {
     condition     = can(regex("^[a-z0-9-]{36}$", var.subscription_id_management)) || var.subscription_id_management == ""
