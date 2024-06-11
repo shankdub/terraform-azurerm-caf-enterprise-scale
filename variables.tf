@@ -6,6 +6,7 @@
 
 variable "root_parent_id" {
   type        = string
+  default = "d1db4e43-c260-4e8e-812a-cfd32b9362ef"
   description = "The root_parent_id is used to specify where to set the root for all Landing Zone deployments. Usually the Tenant ID when deploying the core Enterprise-scale Landing Zones."
 
   validation {
@@ -17,13 +18,13 @@ variable "root_parent_id" {
 variable "root_id" {
   type        = string
   description = "If specified, will set a custom Name (ID) value for the Enterprise-scale \"root\" Management Group, and append this to the ID for all core Enterprise-scale Management Groups."
-  default     = "es"
+  default     = "sd"
 }
 
 variable "root_name" {
   type        = string
   description = "If specified, will set a custom Display Name value for the Enterprise-scale \"root\" Management Group."
-  default     = "Enterprise-Scale"
+  default     = "SD-Enterprise-Root"
 
   validation {
     condition     = can(regex("^[A-Za-z][A-Za-z0-9- ._]{1,22}[A-Za-z0-9]?$", var.root_name))
