@@ -15,6 +15,7 @@ terraform {
 # This will be used for the deployment of all "Core resources".
 
 provider "azurerm" {
+  
   features {}
 }
 
