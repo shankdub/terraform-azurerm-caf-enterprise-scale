@@ -4,3 +4,8 @@
 # Need to consider remediation steps for Landing Zones once deploy_management_resources has been run, for example:
 # - remediate_vm_monitoring   = bool
 # - remediate_vmss_monitoring = bool
+provider "azurerm" {
+  alias           = "management"
+  subscription_id = "d1a7ebf8-bbf9-465b-96e7-09c013117714"
+  features {}
+}
