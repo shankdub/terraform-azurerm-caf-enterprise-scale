@@ -49,7 +49,7 @@ module "caf-enterprise-scale" {
     azurerm.management   = azurerm.management
   }
 
- default_location = eastus 
+ default_location = local.default_location 
  root_parent_id = "d1db4e43-c260-4e8e-812a-cfd32b9362ef"
 }
 # The following module is used to generate the configuration
