@@ -41,7 +41,7 @@ provider "azurerm" {
 
 module "caf-enterprise-scale" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "5.0.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
+  version = "5.2.1" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
   providers = {
     azurerm              = azurerm
